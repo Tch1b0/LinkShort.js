@@ -32,8 +32,8 @@ export class Linker {
 	}
 
 	/**
-	 * Change the destination of a shortcut
-	 * @param destination The new destination of the shortcut
+	 * Change the destination of a `Linker`
+	 * @param destination The new destination of the `Linker`
 	 */
 	public async edit(destination: string): Promise<void> {
 		if (!this.isOwner) {
@@ -50,7 +50,7 @@ export class Linker {
 	}
 
 	/**
-	 * Delete this shortcut from the `API`
+	 * Delete this `Linker` from the `API`
 	 */
 	public async delete(): Promise<void> {
 		if (!this.isOwner) {
