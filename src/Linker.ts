@@ -8,6 +8,12 @@ import { handleResponse } from "./utility";
 export class Linker {
 	requester: AxiosInstance;
 
+	/**
+	 * @param short The shortcut
+	 * @param _destination The destination of the shortcut
+	 * @param token The token of the shortcut
+	 * @param requester The axios instance or baseURL used for making requests
+	 */
 	constructor(
 		public readonly short: string,
 		private _destination: string | unknown,
