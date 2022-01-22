@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from "axios";
+import { baseURL } from ".";
 import { Unauthorized } from "./errors";
 import { handleResponse } from "./utility";
 
@@ -78,5 +79,24 @@ export class Linker {
 	 */
 	public isOwner(): boolean {
 		return this.token !== undefined;
+	}
+
+	public static fromJSON(data: object, requester?: AxiosInstance): Linker {
+		return new Linker(
+			data["short"],
+			data["destination"],
+			"token" in data ? data["token"] : undefined,
+			requester || baseURL
+		);
+	}
+
+	public toJSON(): object {
+		const json = {
+			short: this.short,
+			destination: this.destination,
+		};
+		if (this.isOwner()) json["token"] = this.token;
+
+		return json;
 	}
 }
